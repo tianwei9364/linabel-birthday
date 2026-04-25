@@ -104,7 +104,7 @@ function showLinabel() {
 
     const linabelImg = document.createElement('img');
     linabelImg.className = 'linabel';
-    linabelImg.src = 'https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=400&h=400&fit=crop';
+    linabelImg.src = 'https://raw.githubusercontent.com/alsotang/linabell_stickers/main/images/你的小可爱突然出现.jpeg';
     linabelImg.alt = 'LinaBell';
     scene.appendChild(linabelImg);
 
