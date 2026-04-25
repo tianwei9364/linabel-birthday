@@ -108,6 +108,44 @@ function createFireworks(x, y) {
 function showLinabel() {
     scene.innerHTML = '';
     createStars();
+
+    // Create door
+    const doorContainer = document.createElement('div');
+    doorContainer.className = 'door-container';
+
+    const doorLeft = document.createElement('div');
+    doorLeft.className = 'door door-left';
+    const doorRight = document.createElement('div');
+    doorRight.className = 'door door-right';
+
+    const doorKnob = document.createElement('div');
+    doorKnob.className = 'door-knob';
+
+    const doorHint = document.createElement('div');
+    doorHint.className = 'door-hint';
+    doorHint.textContent = '🚪 点击开门迎接贝儿';
+
+    doorContainer.appendChild(doorLeft);
+    doorContainer.appendChild(doorRight);
+    doorContainer.appendChild(doorKnob);
+    doorContainer.appendChild(doorHint);
+
+    doorContainer.addEventListener('click', () => {
+        doorLeft.classList.add('door-open-left');
+        doorRight.classList.add('door-open-right');
+        doorHint.style.opacity = '0';
+
+        setTimeout(() => {
+            doorContainer.remove();
+            showLinabelCharacter();
+        }, 800);
+    });
+
+    scene.appendChild(doorContainer);
+    dialogueBox.classList.add('hidden');
+}
+
+function showLinabelCharacter() {
     createHearts();
 
     const linabelImg = document.createElement('img');
@@ -182,8 +220,6 @@ function showLinabel() {
             scene.appendChild(wishBtn);
         }, 1500);
     }, 1000);
-
-    dialogueBox.classList.add('hidden');
 }
 
 nextBtn.addEventListener('click', () => {
