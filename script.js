@@ -1,7 +1,7 @@
 const dialogues = [
     "今天是个特别的日子...",
-    "有人想要见你 💕",
-    "她从很远很远的地方赶来...",
+    "亲爱的翁苑婷 💕",
+    "有人从很远很远的地方赶来...",
     "她说她有话想对你说...",
     "你准备好了吗？",
     "3...",
@@ -37,6 +37,14 @@ function createGiftBox() {
 
     giftBox.addEventListener('click', () => {
         giftBox.classList.add('shake');
+
+        // Play background music
+        const audio = document.createElement('audio');
+        audio.src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
+        audio.loop = true;
+        audio.volume = 0.3;
+        audio.play().catch(e => console.log('Audio play failed:', e));
+
         setTimeout(() => {
             giftBox.remove();
             showDialogue();
@@ -106,12 +114,34 @@ function showLinabel() {
     linabelImg.className = 'linabel';
     linabelImg.src = 'https://raw.githubusercontent.com/alsotang/linabell_stickers/main/images/你的小可爱突然出现.jpeg';
     linabelImg.alt = 'LinaBell';
+
+    // Add click interaction
+    let clickCount = 0;
+    linabelImg.addEventListener('click', () => {
+        clickCount++;
+        if (clickCount === 1) {
+            birthdayText.textContent = '💖 翁苑婷，愿你永远开心快乐！';
+        } else if (clickCount === 2) {
+            birthdayText.textContent = '🌟 愿所有美好都如期而至！';
+        } else if (clickCount === 3) {
+            birthdayText.textContent = '🎈 今天的你最闪耀！';
+            clickCount = 0;
+        }
+
+        // Create fireworks on click
+        createFireworks(
+            Math.random() * window.innerWidth,
+            Math.random() * window.innerHeight / 2
+        );
+    });
+
     scene.appendChild(linabelImg);
 
+    const birthdayText = document.createElement('div');
+    birthdayText.className = 'birthday-text';
+    birthdayText.textContent = '🎂 翁苑婷，生日快乐呀！🎉';
+
     setTimeout(() => {
-        const birthdayText = document.createElement('div');
-        birthdayText.className = 'birthday-text';
-        birthdayText.textContent = '🎂 生日快乐呀！🎉';
         scene.appendChild(birthdayText);
 
         for (let i = 0; i < 5; i++) {
@@ -122,6 +152,35 @@ function showLinabel() {
                 );
             }, i * 200);
         }
+
+        // Add wish button
+        setTimeout(() => {
+            const wishBtn = document.createElement('button');
+            wishBtn.className = 'wish-btn';
+            wishBtn.textContent = '💫 许个愿吧';
+            wishBtn.addEventListener('click', () => {
+                const wishes = [
+                    '🌸 愿你的每一天都充满阳光',
+                    '🎀 愿你的梦想都能实现',
+                    '🌈 愿你被世界温柔以待',
+                    '✨ 愿你永远保持少女心',
+                    '🎁 愿你拥有想要的一切'
+                ];
+                const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+                birthdayText.textContent = randomWish;
+
+                // More fireworks
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        createFireworks(
+                            Math.random() * window.innerWidth,
+                            Math.random() * window.innerHeight / 2
+                        );
+                    }, i * 100);
+                }
+            });
+            scene.appendChild(wishBtn);
+        }, 1500);
     }, 1000);
 
     dialogueBox.classList.add('hidden');

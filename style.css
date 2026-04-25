@@ -169,6 +169,12 @@ body {
     height: 300px;
     opacity: 0;
     animation: fadeInBounce 1s forwards;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.linabel:hover {
+    transform: scale(1.1);
 }
 
 @keyframes fadeInBounce {
@@ -262,4 +268,27 @@ body {
         opacity: 1;
         transform: scale(1);
     }
+}
+
+.wish-btn {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #333;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+    animation: fadeInScale 0.5s forwards;
+}
+
+.wish-btn:hover {
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
 }
