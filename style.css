@@ -206,6 +206,7 @@ body {
     transition: all 0.3s;
     float: right;
     box-shadow: 0 5px 15px rgba(255,107,157,0.4);
+    white-space: nowrap;
 }
 
 .next-btn:hover {
@@ -328,6 +329,7 @@ body {
     letter-spacing: 2px;
     word-break: keep-all;
     white-space: normal;
+    overflow-wrap: break-word;
 }
 
 @keyframes fadeInScale {
@@ -489,6 +491,7 @@ body {
     justify-content: center;
     border-radius: 50%;
     background: rgba(255,255,255,0.1);
+    border: none;
 }
 
 .gallery-close:hover {
@@ -501,6 +504,8 @@ body {
     color: white;
     margin-bottom: 40px;
     text-shadow: 0 0 20px rgba(255,107,157,0.8);
+    word-break: keep-all;
+    white-space: nowrap;
 }
 
 .gallery-grid {
@@ -580,37 +585,218 @@ body {
     to { transform: rotate(360deg); }
 }
 
+/* 手机端全面优化 */
 @media (max-width: 768px) {
+    /* 音频可视化 */
+    #visualizer-canvas {
+        height: 100px;
+    }
+    
+    /* 礼物盒 */
+    .gift-box {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .gift-box::before,
+    .gift-box::after {
+        height: 18px;
+        width: 18px;
+    }
+    
+    .gift-bow {
+        width: 50px;
+        height: 30px;
+        top: -25px;
+    }
+    
+    .gift-bow::before,
+    .gift-bow::after {
+        width: 25px;
+        height: 25px;
+    }
+    
+    /* 贝儿图片 */
     .linabel {
-        width: 250px;
-        height: 250px;
+        width: 220px;
+        height: 220px;
     }
     
-    .birthday-text {
-        font-size: 28px;
-        padding: 0 20px;
-    }
-    
-    .door-container {
-        width: 300px;
-        height: 400px;
-    }
-    
-    .door {
-        width: 150px;
-        height: 400px;
+    /* 对话框 */
+    .dialogue-box {
+        bottom: 30px;
+        padding: 20px;
+        width: 92%;
+        max-width: 100%;
+        border-radius: 20px;
     }
     
     .dialogue-content p {
-        font-size: 18px;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        min-height: 50px;
+        word-break: keep-all;
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+    
+    .next-btn {
+        font-size: 14px;
+        padding: 10px 24px;
+        border-radius: 25px;
+    }
+    
+    /* 生日快乐文字 */
+    .birthday-text {
+        font-size: 24px;
+        padding: 0 15px;
+        letter-spacing: 1px;
+        word-break: keep-all;
+        white-space: normal;
+    }
+    
+    /* 门 */
+    .door-container {
+        width: 260px;
+        height: 350px;
+    }
+    
+    .door {
+        width: 130px;
+        height: 350px;
+        border: 4px solid #654321;
+    }
+    
+    .door-knob {
+        width: 18px;
+        height: 18px;
     }
     
     .door-hint {
+        font-size: 18px;
+        bottom: -50px;
+        white-space: nowrap;
+    }
+    
+    /* 许愿按钮 */
+    .wish-btn {
+        font-size: 16px;
+        padding: 14px 32px;
+        bottom: 80px;
+        border-radius: 30px;
+    }
+    
+    /* 照片墙 */
+    .gallery-close {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 32px;
+    }
+    
+    .gallery-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        padding: 0 15px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+        max-width: 95%;
+        padding: 15px;
+    }
+    
+    .gallery-item {
+        width: 140px;
+        height: 140px;
+        border-radius: 12px;
+    }
+    
+    /* 音乐控制按钮 */
+    .music-control {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .music-toggle {
+        width: 50px;
+        height: 50px;
         font-size: 20px;
     }
     
+    /* 爱心动画 */
+    .heart {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .heart::before,
+    .heart::after {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .heart::before {
+        left: -9px;
+    }
+    
+    .heart::after {
+        top: -9px;
+    }
+    
+    /* 烟花效果 */
+    .firework {
+        width: 6px;
+        height: 6px;
+    }
+}
+
+/* 小屏手机优化 */
+@media (max-width: 480px) {
+    .linabel {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .birthday-text {
+        font-size: 20px;
+        padding: 0 10px;
+    }
+    
+    .door-container {
+        width: 220px;
+        height: 300px;
+    }
+    
+    .door {
+        width: 110px;
+        height: 300px;
+    }
+    
+    .dialogue-content p {
+        font-size: 15px;
+    }
+    
     .wish-btn {
+        font-size: 15px;
+        padding: 12px 28px;
+        bottom: 70px;
+    }
+    
+    .door-hint {
         font-size: 16px;
-        padding: 14px 30px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+    }
+    
+    .gallery-item {
+        width: 120px;
+        height: 120px;
     }
 }
