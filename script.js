@@ -182,9 +182,9 @@ function createGiftBox() {
 
 function playBackgroundMusic() {
     audioElement = document.createElement('audio');
-    audioElement.src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
+    audioElement.src = 'https://cdn.pixabay.com/audio/2022/03/10/audio_4a6d7e5cb3.mp3';
     audioElement.loop = true;
-    audioElement.volume = 0.3;
+    audioElement.volume = 0.4;
     audioElement.crossOrigin = 'anonymous';
     
     audioElement.play().then(() => {
