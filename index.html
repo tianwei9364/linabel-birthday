@@ -2,35 +2,66 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special Birthday Surprise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>生日快乐 🎂</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas id="particles-canvas"></canvas>
-    <canvas id="visualizer-canvas"></canvas>
-    
-    <div class="container">
-        <div id="scene" class="scene"></div>
-        
-        <div id="dialogue-box" class="dialogue-box hidden">
-            <div class="dialogue-content">
-                <p id="dialogue-text"></p>
-                <button id="next-btn" class="next-btn">继续</button>
+    <div class="mobile-container">
+        <!-- 开场页 -->
+        <div class="page active" id="page-start">
+            <div class="content-center">
+                <div class="gift-icon">🎁</div>
+                <h1 class="title">有人给你准备了惊喜</h1>
+                <p class="subtitle">点击礼物开始</p>
             </div>
         </div>
 
-        <div id="photo-gallery" class="photo-gallery hidden">
-            <div class="gallery-close">✕</div>
-            <div class="gallery-title">我们的回忆 💕</div>
-            <div class="gallery-grid"></div>
+        <!-- 对话页 -->
+        <div class="page" id="page-dialogue">
+            <div class="content-center">
+                <div class="dialogue-card">
+                    <p class="dialogue-text" id="dialogue-text"></p>
+                </div>
+                <button class="btn-next" id="btn-next">继续 →</button>
+            </div>
         </div>
 
-        <div id="music-control" class="music-control hidden">
-            <button class="music-toggle">🎵</button>
+        <!-- 贝儿页 -->
+        <div class="page" id="page-linabel">
+            <div class="content-center">
+                <img class="character-img" id="linabel-img" src="https://raw.githubusercontent.com/alsotang/linabell_stickers/main/images/你的小可爱突然出现.jpeg" alt="LinaBell">
+                <p class="hint-text">点击贝儿 3 次</p>
+                <div class="click-counter" id="click-counter">0/3</div>
+            </div>
+        </div>
+
+        <!-- 寿星照片页 -->
+        <div class="page" id="page-birthday">
+            <div class="content-center">
+                <img class="character-img" id="birthday-img" src="images/xuyuan.jpg" alt="生日快乐">
+                <h2 class="birthday-title">🎂 翁苑婷<br>生日快乐！🎉</h2>
+                <button class="btn-wish" id="btn-wish">💫 许个愿</button>
+                <button class="btn-gallery" id="btn-gallery">📷 查看相册</button>
+            </div>
+        </div>
+
+        <!-- 照片墙 -->
+        <div class="page" id="page-gallery">
+            <div class="gallery-header">
+                <h2>我们的回忆 💕</h2>
+                <button class="btn-close" id="btn-close-gallery">✕</button>
+            </div>
+            <div class="gallery-scroll" id="gallery-scroll"></div>
         </div>
     </div>
-    
+
+    <!-- 音乐控制 -->
+    <button class="music-btn" id="music-btn">🎵</button>
+
+    <!-- 烟花容器 -->
+    <div class="fireworks-container" id="fireworks"></div>
+
     <script src="script.js"></script>
 </body>
 </html>
