@@ -182,9 +182,9 @@ function createGiftBox() {
 
 function playBackgroundMusic() {
     audioElement = document.createElement('audio');
-    audioElement.src = 'https://cdn.pixabay.com/audio/2022/03/10/audio_4a6d7e5cb3.mp3';
+    audioElement.src = 'https://assets.mixkit.co/music/preview/mixkit-happy-birthday-music-box-518.mp3';
     audioElement.loop = true;
-    audioElement.volume = 0.4;
+    audioElement.volume = 0.5;
     audioElement.crossOrigin = 'anonymous';
     
     audioElement.play().then(() => {
@@ -396,7 +396,7 @@ function showBirthdayPhoto() {
                     '🌸 愿你的每一天都充满阳光',
                     '🎀 愿你的梦想都能实现',
                     '🌈 愿你被世界温柔以待',
-                    '✨ 愿你永远保持少女心',
+                    '✨愿你永远保持少女心',
                     '🎁 愿你拥有想要的一切',
                     '💝 愿你被爱包围',
                     '🌺 愿你的生活如花般绚烂',
