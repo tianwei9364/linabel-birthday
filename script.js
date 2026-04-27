@@ -290,7 +290,7 @@ function showLinabel() {
 
     const doorHint = document.createElement('div');
     doorHint.className = 'door-hint';
-    doorHint.textContent = '🚪 点击开门迎接寿星';
+    doorHint.textContent = '🚪 点击开门迎接贝儿';
 
     doorContainer.appendChild(doorLeft);
     doorContainer.appendChild(doorRight);
@@ -317,7 +317,7 @@ function showLinabel() {
 
         setTimeout(() => {
             doorContainer.remove();
-            showBirthdayPhoto();
+            showLinabelCharacter();
         }, 1000);
     });
 
@@ -325,13 +325,78 @@ function showLinabel() {
     dialogueBox.classList.add('hidden');
 }
 
-function showBirthdayPhoto() {
+function showLinabelCharacter() {
     createHearts();
 
+    const linabelImg = document.createElement('img');
+    linabelImg.className = 'linabel';
+    linabelImg.src = 'https://raw.githubusercontent.com/alsotang/linabell_stickers/main/images/你的小可爱突然出现.jpeg';
+    linabelImg.alt = 'LinaBell';
+
+    let clickCount = 0;
+    let longPressTimer;
+    
+    linabelImg.addEventListener('mousedown', () => {
+        longPressTimer = setTimeout(() => {
+            showPhotoGallery();
+        }, 1000);
+    });
+    
+    linabelImg.addEventListener('mouseup', () => {
+        clearTimeout(longPressTimer);
+    });
+    
+    linabelImg.addEventListener('mouseleave', () => {
+        clearTimeout(longPressTimer);
+    });
+
+    linabelImg.addEventListener('click', () => {
+        clickCount++;
+        
+        if (clickCount === 1) {
+            linabelImg.style.transform = 'scale(1.2) rotate(10deg)';
+            setTimeout(() => {
+                linabelImg.style.transform = 'scale(1)';
+            }, 300);
+        } else if (clickCount === 3) {
+            linabelImg.style.transition = 'all 0.8s';
+            linabelImg.style.transform = 'scale(0) rotate(360deg)';
+            linabelImg.style.opacity = '0';
+            
+            setTimeout(() => {
+                linabelImg.remove();
+                showBirthdayPhoto();
+            }, 800);
+        }
+    });
+
+    scene.appendChild(linabelImg);
+
+    const hintText = document.createElement('div');
+    hintText.className = 'birthday-text';
+    hintText.textContent = '💕 点击贝儿3次，她有惊喜给你！';
+    hintText.style.fontSize = '32px';
+
+    setTimeout(() => {
+        scene.appendChild(hintText);
+
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => {
+                createFireworks(
+                    Math.random() * window.innerWidth,
+                    Math.random() * window.innerHeight / 2
+                );
+            }, i * 300);
+        }
+    }, 500);
+}
+
+function showBirthdayPhoto() {
     const photoImg = document.createElement('img');
     photoImg.className = 'linabel';
     photoImg.src = 'images/xuyuan.jpg';
     photoImg.alt = '生日快乐';
+    photoImg.style.opacity = '0';
 
     let clickCount = 0;
     let longPressTimer;
@@ -376,15 +441,16 @@ function showBirthdayPhoto() {
     birthdayText.textContent = '🎂 翁苑婷，生日快乐呀！🎉';
 
     setTimeout(() => {
+        photoImg.style.opacity = '1';
         scene.appendChild(birthdayText);
 
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 10; i++) {
             setTimeout(() => {
                 createFireworks(
                     Math.random() * window.innerWidth,
                     Math.random() * window.innerHeight / 2
                 );
-            }, i * 300);
+            }, i * 250);
         }
 
         setTimeout(() => {
@@ -396,7 +462,7 @@ function showBirthdayPhoto() {
                     '🌸 愿你的每一天都充满阳光',
                     '🎀 愿你的梦想都能实现',
                     '🌈 愿你被世界温柔以待',
-                    '✨愿你永远保持少女心',
+                    '✨ 愿你永远保持少女心',
                     '🎁 愿你拥有想要的一切',
                     '💝 愿你被爱包围',
                     '🌺 愿你的生活如花般绚烂',
@@ -416,7 +482,7 @@ function showBirthdayPhoto() {
             });
             scene.appendChild(wishBtn);
         }, 2000);
-    }, 1000);
+    }, 100);
 }
 
 function showPhotoGallery() {
