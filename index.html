@@ -7,15 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <canvas id="particles-canvas"></canvas>
+    <canvas id="visualizer-canvas"></canvas>
+    
     <div class="container">
         <div id="scene" class="scene"></div>
+        
         <div id="dialogue-box" class="dialogue-box hidden">
             <div class="dialogue-content">
                 <p id="dialogue-text"></p>
                 <button id="next-btn" class="next-btn">继续</button>
             </div>
         </div>
+
+        <div id="photo-gallery" class="photo-gallery hidden">
+            <div class="gallery-close">✕</div>
+            <div class="gallery-title">我们的回忆 💕</div>
+            <div class="gallery-grid"></div>
+        </div>
+
+        <div id="music-control" class="music-control hidden">
+            <button class="music-toggle">🎵</button>
+        </div>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
