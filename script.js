@@ -290,7 +290,7 @@ function showLinabel() {
 
     const doorHint = document.createElement('div');
     doorHint.className = 'door-hint';
-    doorHint.textContent = '🚪 点击开门迎接贝儿';
+    doorHint.textContent = '🚪 点击开门迎接寿星';
 
     doorContainer.appendChild(doorLeft);
     doorContainer.appendChild(doorRight);
@@ -317,7 +317,7 @@ function showLinabel() {
 
         setTimeout(() => {
             doorContainer.remove();
-            showLinabelCharacter();
+            showBirthdayPhoto();
         }, 1000);
     });
 
@@ -325,32 +325,32 @@ function showLinabel() {
     dialogueBox.classList.add('hidden');
 }
 
-function showLinabelCharacter() {
+function showBirthdayPhoto() {
     createHearts();
 
-    const linabelImg = document.createElement('img');
-    linabelImg.className = 'linabel';
-    linabelImg.src = 'https://raw.githubusercontent.com/alsotang/linabell_stickers/main/images/你的小可爱突然出现.jpeg';
-    linabelImg.alt = 'LinaBell';
+    const photoImg = document.createElement('img');
+    photoImg.className = 'linabel';
+    photoImg.src = 'images/xuyuan.jpg';
+    photoImg.alt = '生日快乐';
 
     let clickCount = 0;
     let longPressTimer;
     
-    linabelImg.addEventListener('mousedown', () => {
+    photoImg.addEventListener('mousedown', () => {
         longPressTimer = setTimeout(() => {
             showPhotoGallery();
         }, 1000);
     });
     
-    linabelImg.addEventListener('mouseup', () => {
+    photoImg.addEventListener('mouseup', () => {
         clearTimeout(longPressTimer);
     });
     
-    linabelImg.addEventListener('mouseleave', () => {
+    photoImg.addEventListener('mouseleave', () => {
         clearTimeout(longPressTimer);
     });
 
-    linabelImg.addEventListener('click', () => {
+    photoImg.addEventListener('click', () => {
         clickCount++;
         const messages = [
             '💖 翁苑婷，愿你永远开心快乐！',
@@ -369,7 +369,7 @@ function showLinabelCharacter() {
         );
     });
 
-    scene.appendChild(linabelImg);
+    scene.appendChild(photoImg);
 
     const birthdayText = document.createElement('div');
     birthdayText.className = 'birthday-text';
@@ -427,6 +427,7 @@ function showPhotoGallery() {
     galleryGrid.innerHTML = '';
     
     const photos = [
+        'images/xuyuan.jpg',
         'https://raw.githubusercontent.com/alsotang/linabell_stickers/main/images/你的小可爱突然出现.jpeg',
         'https://raw.githubusercontent.com/alsotang/linabell_stickers/main/images/贝儿害羞.jpeg',
         'https://raw.githubusercontent.com/alsotang/linabell_stickers/main/images/贝儿开心.jpeg',
